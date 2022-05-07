@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">test</string>
+    <string name="win">Gagné :))</string>
+    <string name="lose">Perdu</string>
+    <string name="results_format">Resultat</string>
+    <string name="reset_game">Recommencer</string>
+    <string name="vie">Vie Perdue</string>
+</resources>
