@@ -14,6 +14,9 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
 
@@ -42,6 +45,9 @@ class DrawingView @JvmOverloads constructor (context: Context, attributes: Attri
     var totalElapsedTime = 0.0
     var i =0
     var viesutilisees = 0
+    lateinit var un: ImageView
+    lateinit var deux: ImageView
+    lateinit var trois: ImageView
 
 
 
@@ -252,13 +258,23 @@ class DrawingView @JvmOverloads constructor (context: Context, attributes: Attri
 
 
         if (balle.balleperdue) {
-            if (viesutilisees < 2) {
-                viesutilisees += 1
+
+            if (viesutilisees == 0) {
+                trois.visibility = View.INVISIBLE
                 gameOver = true
                 drawing = false
                 showGameOverDialog(R.string.vie)
-            } else {
-                viesutilisees = 0
+
+            }
+            if (viesutilisees == 1) {
+                deux.visibility = View.INVISIBLE
+                gameOver = true
+                drawing = false
+                showGameOverDialog(R.string.vie)
+            }
+            if (viesutilisees == 2) {
+                un.visibility = View.INVISIBLE
+                viesutilisees = -1
                 gameOver = true
                 drawing = false
                 showGameOverDialog(R.string.lose)
@@ -307,6 +323,7 @@ class DrawingView @JvmOverloads constructor (context: Context, attributes: Attri
         val w = screenWidth
         /*cible.resetCible()
         obstacle.resetObstacle()*/
+        viesutilisees += 1
         timeLeft = 60.0
         balle.resetCanonBall()
         shotsFired = 0
